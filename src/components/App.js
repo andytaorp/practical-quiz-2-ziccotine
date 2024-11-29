@@ -12,26 +12,29 @@ function App() {
 
   const handleToggleTask = (id) => {
     // TODO: write code to toggle a task's status
-    setTasks((prevTasks) => prevTasks.map((Tasks) => Tasks.id === id ? { ...Tasks, completed: !Tasks.completed } : Tasks));
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
   };
 
   const handleDeleteTask = (id) => {
     // TODO: write code to delete a task
-    setTasks((prevTasks) => prevTasks.filter((Tasks) => Tasks.id !== id));
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
 
   return (
     <div className="app">
       <h1>Task Tracker</h1>
       {/*TODO: add a form to add a new task*/}
-      <Form handleAddItem={handleAddTask} />
+      <Form onAddTask={handleAddTask} />
+      {/*TODO: add a list of tasks*/}
       <TaskList
         Tasks={Tasks}
         handleDeleteTask={handleDeleteTask}
         handleToggleTask={handleToggleTask}
       />
-      {/*TODO: add a list of tasks*/}
-      
     </div>
   );
 }
